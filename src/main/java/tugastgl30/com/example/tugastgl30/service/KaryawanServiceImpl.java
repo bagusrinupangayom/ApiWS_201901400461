@@ -19,35 +19,70 @@ import tugastgl30.com.example.tugastgl30.repository.KaryawanRepository;
 public class KaryawanServiceImpl implements KaryawanService {
 
     @Autowired
-    private KaryawanRepository karyawanrepository;
+    private KaryawanRepository repository;
+    
     
     @Override
-    public List<DaftarKaryawan> getAllKaryawan() {
-        return karyawanrepository.findAll();
-        
+    public DaftarKaryawan addKaryawan(DaftarKaryawan karyawan) {
+        return repository.save(karyawan);
+    }
+    
+       @Override
+    public DaftarKaryawan getKaryawanById(int KaryawanId) {
+        return repository.findById(KaryawanId).get();
     }
 
     @Override
-    public void saveKaryawan(DaftarKaryawan daftarkaryawan) {
-        this.karyawanrepository.save(daftarkaryawan);
+    public void updateKaryawan(DaftarKaryawan karyawan) {
+        DaftarKaryawan karyawanDB = repository.findById(karyawan.getId()).orElseThrow();
+        repository.save(karyawan);
     }
 
+
     @Override
-    public DaftarKaryawan getDaftarKaryawanById(long id) {
-        Optional<DaftarKaryawan> optional = karyawanrepository.findById(id);
-        DaftarKaryawan daftarkaryawan = null;
-        if (optional.isPresent()){
-            daftarkaryawan = optional.get();
-        }else{
-            throw new RuntimeException("DaftarKaryawan not found for id :: "+id);
+    public void deleteKaryawanById(int KaryawanId) {
+        try{
+            repository.deleteById(KaryawanId);
         }
-        return daftarkaryawan;
+        catch(Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Override
-    public void deleteKaryawanById(long id) {
-        this.karyawanrepository.deleteById(id);
-         
+    public List<DaftarKaryawan> getAllKaryawan() {
+        return repository.findAll();
     }
+    
+//    @Override
+//    public List<DaftarKaryawan> getAllKaryawan() {
+//        return karyawanrepository.findAll();
+//        
+//    }
+//
+//    @Override
+//    public void saveKaryawan(DaftarKaryawan daftarkaryawan) {
+//        this.karyawanrepository.save(daftarkaryawan);
+//    }
+//
+//    @Override
+//    public DaftarKaryawan getDaftarKaryawanById(long id) {
+//        Optional<DaftarKaryawan> optional = karyawanrepository.findById(id);
+//        DaftarKaryawan daftarkaryawan = null;
+//        if (optional.isPresent()){
+//            daftarkaryawan = optional.get();
+//        }else{
+//            throw new RuntimeException("DaftarKaryawan not found for id :: "+id);
+//        }
+//        return daftarkaryawan;
+//    }
+//
+//    @Override
+//    public void deleteKaryawanById(long id) {
+//        this.karyawanrepository.deleteById(id);
+//         
+//    }
+
+ 
     
 }

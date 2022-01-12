@@ -13,7 +13,15 @@ import tugastgl30.com.example.tugastgl30.model.DaftarKaryawan;
  */
 public interface KaryawanService {
     List<DaftarKaryawan> getAllKaryawan();
-    void saveKaryawan(DaftarKaryawan daftarkaryawan);
-    DaftarKaryawan getDaftarKaryawanById(long id);
-    void deleteKaryawanById(long id);
+//    void saveKaryawan(DaftarKaryawan daftarkaryawan);
+//    DaftarKaryawan getDaftarKaryawanById(long id);
+//    void deleteKaryawanById(long id);
+    
+    DaftarKaryawan addKaryawan(DaftarKaryawan karyawan);
+    DaftarKaryawan getKaryawanById(int KaryawanId);
+    void updateKaryawan(DaftarKaryawan karyawan);
+    void deleteKaryawanById(int bookId);
+    
 }
+
+

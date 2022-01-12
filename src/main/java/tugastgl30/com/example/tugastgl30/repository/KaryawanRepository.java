@@ -13,6 +13,6 @@ import tugastgl30.com.example.tugastgl30.model.DaftarKaryawan;
  * @author ASUS
  */
 @Repository
-public interface KaryawanRepository extends JpaRepository<DaftarKaryawan, Long> {
+public interface KaryawanRepository extends JpaRepository<DaftarKaryawan, Integer> {
     
 }
