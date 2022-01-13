@@ -20,7 +20,7 @@ public interface KaryawanService {
     DaftarKaryawan addKaryawan(DaftarKaryawan karyawan);
     DaftarKaryawan getKaryawanById(int KaryawanId);
     void updateKaryawan(DaftarKaryawan karyawan);
-    void deleteKaryawanById(int bookId);
+    void deleteKaryawanById(int KaryawanId);
     
 }
 
